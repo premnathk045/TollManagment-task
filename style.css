@@ -1,0 +1,129 @@
+body{
+    font-family: poppins;
+    font-weight: 500;
+    color: #393838;
+}
+tr{
+    background-color: rgb(244 244 244);
+}
+.top-bar-sec{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.top-sec-left{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.top-sec-right{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+.form-popup{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 30%;
+    top: 10vh;
+    left: 30%;
+    padding: 30px 30px;
+    background-color: rgb(255, 255, 255);
+    z-index: 99;
+}
+.bg-overlay{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #2d2d2d;
+    opacity: 0.75;
+}
+.form-header{
+    text-align: center;
+}
+.log-table{
+    width: 100%;
+    margin-top: 20px;
+}
+.table-header{
+    background-color: rgb(216 216 216) !important;
+}
+.header-btn{
+    width: 150px;
+    height: 30px;
+    background-color: #0852ff;
+    font-size: 14px;
+    color: white;
+    border: none;
+}
+.vehicle-fare-sec{
+    display: flex;
+    gap: 15px;
+}
+.search-box{
+    width: 250px;
+    height: 40px;
+    border-radius: 25px;
+    padding: 10px;
+    border-color: #c5c5c5;
+}
+.search-box[type="text"]:focus {
+    outline: none;
+}
+.toll-filter-dropdown{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color:rgb(237 237 237);
+    border-radius: 5px;
+    overflow:scroll;
+    margin-left: 200px;
+}
+.toll-filter-all{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    align-items: center;
+    padding-left: 20px;
+}
+.toll-filter-list{
+    display: flex;
+    width: 90%;
+    height: 50px;
+    font-size: 16px;
+    align-items: center;
+    padding-left: 10%;
+}
+.toll-filter-all:hover{
+    background-color: rgb(216 216 216);
+}    
+.toll-filter-list:hover{
+    background-color: rgb(216 216 216);
+}
+
+.submit-btn{
+    background-color: #0852ff;
+    border: none;
+    height: 40px;
+    color: white;
+
+}
+form select{
+    height: 30px;
+}
+form input{
+    height: 30px;
+}
+.form-close-btn{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.dropdown-close-btn{
+    float: right;
+    margin-right: 15px;
+    margin-top: 15px;
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="https://code.iconify.design/iconify-icon/1.0.0/iconify-icon.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    
+</head>
+<body>
+
+    <div class="bg-overlay" style="display: none;"></div>
+
+    <!-- top menu button section -->
+    <div class="top-bar-sec">
+         <div class="top-sec-left">
+            <span class="bread-crumb">Toll entries/Vehicle entries</span>
+            <span class="toll-filter" onclick="tollFilter()">
+                <iconify-icon icon="ci:filter-outline" style="color: #c5c5c5;" width="24" height="24"></iconify-icon>
+            </span>
+            <input type="search" class="search-box" placeholder="Search vehicle" onkeyup="searchFunction()">
+        </div>
+
+        <div class="top-sec-right">
+            <button class="header-btn" onclick="vehicleEntryForm()">Add Vehicle entry</button>
+            <button class="header-btn" onclick=" newTollForm()">Add New toll</button>
+            <button class="header-btn" id="tollList-display" onclick="tollListDisplay()">View all toll</button>
+            <button class="header-btn" id="tollList-back" style="display:none;" onclick="tollListBack()">Back to vehicle logs</button>
+        </div>
+    </div>       
+
+    <div class="toll-filter-dropdown" style="display: none;">
+        <div>
+            <iconify-icon class="dropdown-close-btn" icon="ant-design:close-square-outlined" style="color: #767676;" width="26" height="26" onclick="formClose()"></iconify-icon>
+        </div>    
+        <div class="toll-filter-list">All</div>
+    </div>
+
+
+    <!-- Add new vehicle entry form section -->
+    <form class="form-popup" id="new-vehicle-entry" style="display: none;">
+
+        <div class="form-header">Add new entry</div>
+        <iconify-icon class="form-close-btn" icon="ant-design:close-square-outlined" style="color: #767676;" width="32" height="32" onclick="formClose()"></iconify-icon>
+
+        <label for="toll-name">Select toll name*</label>
+        <select id="toll-name" required>
+            <option value="Kappalur">kappalur</option>
+            <option value="Thoraipakkam">thoraipakkam</option>
+            <option value="Vandalur">vandalur</option>
+        </select>
+
+        <label for="vehicle-type">Select vehicle type*</label>
+        <select id="vehicle-type" required>
+            <option value="Light">Car/Jeep/Van</option>
+            <option value="LCV">LCV</option>
+            <option value="Medium">Truck/Bus</option>
+            <option value="Heavy vehicle">Heavy vehicle</option>
+        </select>
+
+        <label for="vehicle-number">Vehicle number*</label>
+        <input id="vehicle-number" placeholder="Enter your vehicle number" required>
+
+        <label for="tarrif">Tarrif*</label>
+        <!-- <input id="tarrif" placeholder="Tarrif amount" disabled> -->
+        <div id="tarrif">Tarrif amount</div>
+
+        <input class="submit-btn" type="submit" value="Add Entry" onclick="vehicleEntryValue(event)">
+
+    </form>
+    <!-- vehicle entry log table -->
+    <table class="log-table" id="vehicle-list-table">
+        <tbody>
+            <tr class="table-header">
+                <th>VEHICLE TYPE</th>
+                <th>VEHICLE NUMBER</th>
+                <th>DATE/TIME</th>
+                <th>TOLL NAME</th>
+                <th>TARIFF</th>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <!-- Add new toll form section -->
+    <form class="form-popup" id="new-toll-entry" style="display: none;">
+
+        <div class="form-header">Add new toll</div>
+        <iconify-icon class="form-close-btn" icon="ant-design:close-square-outlined" style="color: #767676;" width="32" height="32" onclick="formClose()"></iconify-icon>
+
+        <label for="new-toll-name">Toll Name*</label>
+        <input id="new-toll-name" placeholder="Enter toll name" required>
+
+        
+        <label for="vehicle-fare-sec">Vehicle fare details*</label>
+        <div class="vehicle-fare-sec">
+            <select class="vehicle-type" required>
+                <option value="Light">Car/Jeep/Van</option>
+                <option value="LCV">LCV</option>
+                <option value="Medium">Truck/Bus</option>
+                <option value="Heavy vehicle">Heavy vehicle</option>
+            </select>
+            <input type="number" class="single-trip" placeholder="Single Journey">
+            <input type="number"  class="return-trip" placeholder="Return Journey">
+        </div>   
+
+        <div class="vehicle-fare-sec">
+            <select class="vehicle-type" required>
+                <option value="Light">Car/Jeep/Van</option>
+                <option value="LCV">LCV</option>
+                <option value="Medium">Truck/Bus</option>
+                <option value="Heavy vehicle">Heavy vehicle</option>
+            </select>
+            <input type="number" class="single-trip" placeholder="Single Journey">
+            <input type="number" class="return-trip" placeholder="Return Journey">
+        </div>   
+        
+        <div class="vehicle-fare-sec">
+            <select class="vehicle-type" required>
+                <option value="Light">Car/Jeep/Van</option>
+                <option value="LCV">LCV</option>
+                <option value="Medium">Truck/Bus</option>
+                <option value="Heavy vehicle">Heavy vehicle</option>
+            </select>
+            <input type="number" class="single-trip" placeholder="Single Journey">
+            <input type="number"  class="return-trip" placeholder="Return Journey">
+        </div>    
+
+        <div class="vehicle-fare-sec">
+            <select class="vehicle-type" required>
+                <option value="Light">Car/Jeep/Van</option>
+                <option value="LCV">LCV</option>
+                <option value="Medium">Truck/Bus</option>
+                <option value="Heavy vehicle">Heavy vehicle</option>
+            </select>
+            <input type="number" class="single-trip" placeholder="Single Journey">
+            <input type="number"  class="return-trip" placeholder="Return Journey">
+        </div>   
+
+
+        <input class="submit-btn" type="submit" value="Add Entry" onclick="newTollValue(event)">
+
+    </form>
+    <!-- Tollgate list log table -->
+    <table  class="log-table" id="toll-list-table" style="display: none;">
+        <tbody>
+            <tr class="table-header" id="toll-table-header">
+                <th>TOLL NAME</th>
+                <th>CAR/JEEP/VAN</th>
+                <th>LCV</th>
+                <th>TRUCK/BUS</th> 
+                <th>HEAVY VEHICLE</th>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <script src="./app.js"></script>
+</body>
+</html>
